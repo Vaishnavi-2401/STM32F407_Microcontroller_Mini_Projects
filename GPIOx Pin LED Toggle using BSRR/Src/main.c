@@ -43,17 +43,17 @@ int main(void)
 	GPIOD -> OSPEEDR &= ~(BV(27));
 	GPIOD -> OSPEEDR |= BV(26);
 
-	// Configure no pull-up/pull-down resistor for pin 13
+	// Configure pull-up/pull-down resistor for pin 13
 	GPIOD -> PUPDR &= ~(BV(27));
 	GPIOD -> PUPDR |= BV(26);
 
 	while(1)
 	{
-		// Set pin 13 to high (turn on the LED connected to pin 13)
+		// Set pin 13 to high (turn ON the LED connected to pin 13)
 		GPIOD -> BSRR |= BV(13);
 		DelayMs(500);
 
-		// Set pin 29 to high (turn on another LED connected to pin 29)
+		// Set pin 29 to high (turn ON another LED connected to pin 29)
 		GPIOD -> BSRR |= BV(29);
 		DelayMs(500);
 	}

@@ -186,7 +186,7 @@ int main(void)
  8000262:	f043 6380 	orr.w	r3, r3, #67108864	@ 0x4000000
  8000266:	6093      	str	r3, [r2, #8]
 
-	// Configure no pull-up/pull-down resistor for pin 13
+	// Configure pull-up/pull-down resistor for pin 13
 	GPIOD -> PUPDR &= ~(BV(27));
  8000268:	4b11      	ldr	r3, [pc, #68]	@ (80002b0 <main+0x98>)
  800026a:	68db      	ldr	r3, [r3, #12]
@@ -202,7 +202,7 @@ int main(void)
 
 	while(1)
 	{
-		// Set pin 13 to high (turn on the LED connected to pin 13)
+		// Set pin 13 to high (turn ON the LED connected to pin 13)
 		GPIOD -> BSRR |= BV(13);
  8000280:	4b0b      	ldr	r3, [pc, #44]	@ (80002b0 <main+0x98>)
  8000282:	699b      	ldr	r3, [r3, #24]
@@ -213,7 +213,7 @@ int main(void)
  800028c:	f44f 70fa 	mov.w	r0, #500	@ 0x1f4
  8000290:	f7ff ff9a 	bl	80001c8 <DelayMs>
 
-		// Set pin 29 to high (turn on another LED connected to pin 29)
+		// Set pin 29 to high (turn ON another LED connected to pin 29)
 		GPIOD -> BSRR |= BV(29);
  8000294:	4b06      	ldr	r3, [pc, #24]	@ (80002b0 <main+0x98>)
  8000296:	699b      	ldr	r3, [r3, #24]

@@ -33,3 +33,24 @@ Command-line arguments:  -os linux -ws gtk -arch x86_64
 
 !ENTRY org.eclipse.cdt.core 1 0 2025-04-19 11:08:59.789
 !MESSAGE Indexed 'GPIOx Pin LED Toggle using BSRR' (2 sources, 0 headers) in 0.157 sec: 65 declarations; 57 references; 10 unresolved inclusions; 0 syntax errors; 31 unresolved names (20%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2025-04-19 11:33:32.592
+!MESSAGE Indexed 'GPIOx Pin LED Toggle using ODR' (2 sources, 53 headers) in 0.544 sec: 1,948 declarations; 2,834 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.042%)
+!SESSION 2025-04-22 14:05:17.588 -----------------------------------------------
+eclipse.buildId=Version 1.16.1
+java.version=17.0.11
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_IN
+Command-line arguments:  -os linux -ws gtk -arch x86_64
+
+!ENTRY org.eclipse.core.resources 2 10035 2025-04-22 14:05:20.531
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2025-04-22 14:05:27.600
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2025-04-22 14:05:27.602
+!MESSAGE Log4j2 initialized with config file /home/sunbeam/Desktop/GIT DATA/STM32F407_Microcontroller_Mini_Projects/.metadata/.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2025-04-22 14:05:51.684
+!MESSAGE Started RMI Server, listening on port 41337
