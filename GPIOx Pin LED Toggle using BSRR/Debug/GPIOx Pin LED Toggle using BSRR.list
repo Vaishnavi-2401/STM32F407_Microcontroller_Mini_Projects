@@ -139,6 +139,7 @@ int main(void)
 {
  8000218:	b580      	push	{r7, lr}
  800021a:	af00      	add	r7, sp, #0
+	// Initialize the system clock and configuration
 	SystemInit();
  800021c:	f000 f84a 	bl	80002b4 <SystemInit>
 

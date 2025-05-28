@@ -345,3 +345,21 @@ Caused by: sun.security.provider.certpath.SunCertPathBuilderException: unable to
 
 !ENTRY org.eclipse.cdt.core 1 0 2025-05-27 20:29:54.096
 !MESSAGE Indexed 'Multi-LED Blinking with Switch Input' (3 sources, 53 headers) in 3.23 sec: 1,950 declarations; 2,836 references; 0 unresolved inclusions; 2 syntax errors; 2 unresolved names (0.042%)
+!SESSION 2025-05-28 10:11:38.020 -----------------------------------------------
+eclipse.buildId=Version 1.16.1
+java.version=17.0.11
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_IN
+Command-line arguments:  -os linux -ws gtk -arch x86_64
+
+!ENTRY org.eclipse.core.resources 2 10035 2025-05-28 10:11:40.930
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2025-05-28 10:11:47.037
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2025-05-28 10:11:47.039
+!MESSAGE Log4j2 initialized with config file /home/sunbeam/Desktop/GIT DATA/STM32F407_Microcontroller_Mini_Projects/.metadata/.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2025-05-28 10:12:02.038
+!MESSAGE Started RMI Server, listening on port 41337

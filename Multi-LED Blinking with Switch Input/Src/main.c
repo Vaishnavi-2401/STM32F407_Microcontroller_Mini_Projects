@@ -20,6 +20,8 @@
 #include <stdio.h>
 #include "stm32f4xx.h"
 #include "system_stm32f4xx.h"
+#include "led.h"
+#include "switch.h"
 
 #if !defined(__SOFT_FP__) && defined(__ARM_FP)
   #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
@@ -27,36 +29,43 @@
 
 int main(void)
 {
-	SystemInit();
+   // Initialize the system clock and configuration
+   SystemInit();
 
-	// Enable clock for GPIOD (GPIO port D)
-	RCC -> AHB1ENR |= BV(3);
+   // Counter to keep track of which LED to blink
+   uint32_t count = 0;
 
-	// Configure GPIOD pin 13 as an output
-	GPIOD -> MODER &= ~BV(27);	// Clear mode for pin 13
-	GPIOD -> MODER |= BV(26);	// Set mode for pin 13
+   // Base pin (LED_GREEN_PIN assumed to be a macro defined in led.h)
+   uint32_t pin = LED_GREEN_PIN;
 
-	// Set pin 13 output type as open-drain
-	GPIOD -> OTYPER |= BV(13);
+   // Initialize all 4 LEDs (assuming each LED has a unique pin defined in led.h)
+   led_init(LED_ORANGE_PIN);
+   led_init(LED_GREEN_PIN);
+   led_init(LED_BLUE_PIN);
+   led_init(LED_RED_PIN);
 
-	// Configure the output low speed for pin 13
-	GPIOD -> OSPEEDR &= ~(BV(27));
-	GPIOD -> OSPEEDR |= (BV(26));
-
-	// Configure pull-up/pull-down resistor for pin 13
-	GPIOD -> PUPDR &= ~BV(27);
-	GPIOD -> PUPDR |= BV(26);
+   // Initialize the switch
+   SwitchInit();
 
 	while(1)
 	{
-		// Set pin 13 to high (turn ON the LED connected to pin 13)
-		GPIOD -> ODR |= BV(13);
-		DelayMs(500);
+		    // Wait until the switch is pressed (switch_flag set by interrupt or polling in switch.c)
+            while(switch_flag == 0);
 
-		// Set pin 13 to low (turn OFF the LED connected to pin 13)
-		GPIOD -> ODR &= ~BV(13);
-		DelayMs(500);
+            // Blink the corresponding LED for 500ms ("pin + count" calculates the current LED pin)
+            ledblink(pin + count , 500);
+
+            // Move to the next LED
+            count++;
+
+            // Reset the switch flag so the loop waits for the next press
+            switch_flag = 0;
+
+            if(count == 4)
+            {
+            	// Restart from the first LED after blinking all 4
+            	count = 0;
+            }
 	}
-
 	return 0;
 }

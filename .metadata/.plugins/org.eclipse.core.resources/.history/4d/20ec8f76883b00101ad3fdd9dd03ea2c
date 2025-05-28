@@ -1,0 +1,43 @@
+/*
+ * switch.c
+ *
+ *  Created on: May 27, 2025
+ *      Author: Vaishnavi Chirmade
+ */
+
+#include "switch.h"
+
+void SwitchInit(void)
+{
+	// Configure GPIO pin as input
+	GPIO_SWITCH -> MODER &= BV((GPIO_SWITCH_PIN >> 1) +1);	// Clear mode for pin
+	GPIO_SWITCH -> MODER |= BV(GPIO_SWITCH_PIN >> 1);		// Set mode for pin
+
+	// Clear pull-up/pull-down configuration for the pin
+	GPIO_SWITCH -> PUPDR &= ~(((GPIO_SWITCH_PIN >> 1) +1) | (GPIO_SWITCH_PIN >> 1));
+
+	//Interrupt initialization
+
+	// Configure EXTI for falling edge trigger (button press)
+	EXTI -> FTSR |= BV(SWITCH_EXTI);
+
+	// Unmask the interrupt line (enable interrupt)
+	EXTI -> IMR |= BV(SWITCH_EXTI);
+
+	// Select GPIO port for EXTI line (clearing EXTICR bits to select Port likely GPIOA)
+	SYSCFG -> EXTICR[0] = ~(BV(3) | BV(2) | BV(1) | BV(0));
+
+	// Enable EXTI0 interrupt in NVIC
+	NVIC_EnableIRQ(EXTI0_IRQn);
+}
+
+volatile uint32_t switch_flag = 0;
+
+void EXTI0_IRQHandler(void)
+{
+	// Clear interrupt pending flag
+	EXTI -> PR |= BV(SWITCH_EXTI);
+
+	// Set flag to indicate switch press
+	switch_flag = 1;
+}

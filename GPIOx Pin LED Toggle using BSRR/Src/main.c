@@ -27,6 +27,7 @@
 
 int main(void)
 {
+	// Initialize the system clock and configuration
 	SystemInit();
 
 	// Enable clock for GPIOD (GPIO port D)
